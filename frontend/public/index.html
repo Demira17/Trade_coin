@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Goins Store</title>
+    <link rel="stylesheet" href="%PUBLIC_URL%/styles.css" />
+</head>
+<body>
+<!-- VANILLA UI (script.js) -->
+<div id="vanilla-container">
+    <div class="header">
+        <h1 class="store-title">Goins Store</h1>
+        <p id="balance">Current balance: 0 Goins</p>
+    </div>
+
+    <div class="store">
+        <div class="coin-package" data-goins="10" data-price="1">
+            <img src="%PUBLIC_URL%/images/Gold_Coin_10.png" alt="10 Goins" class="coin-image" />
+            <p>10 Goins - €1</p>
+            <button class="buy-button">Buy</button>
+        </div>
+        <div class="coin-package" data-goins="50" data-price="2.5">
+            <img src="%PUBLIC_URL%/images/Gold_Coin_50.png" alt="50 Goins" class="coin-image" />
+            <p>50 Goins - €2.5</p>
+            <button class="buy-button">Buy</button>
+        </div>
+        <div class="coin-package" data-goins="100" data-price="5">
+            <img src="%PUBLIC_URL%/images/Gold_Coin_100.png" alt="100 Goins" class="coin-image" />
+            <p>100 Goins - €5</p>
+            <button class="buy-button">Buy</button>
+        </div>
+        <div class="coin-package" data-goins="500" data-price="10">
+            <img src="%PUBLIC_URL%/images/Gold_Coin_500.png" alt="500 Goins" class="coin-image" />
+            <p>500 Goins - €10</p>
+            <button class="buy-button">Buy</button>
+        </div>
+        <div class="coin-package" data-goins="1000" data-price="25">
+            <img src="%PUBLIC_URL%/images/Gold_Coin_1000.png" alt="1000 Goins" class="coin-image" />
+            <p>1000 Goins - €25</p>
+            <button class="buy-button">Buy</button>
+        </div>
+        <div class="coin-package" data-goins="2000" data-price="50">
+            <img src="%PUBLIC_URL%/images/Gold_Coin_2000.png" alt="2000 Goins" class="coin-image" />
+            <p>2000 Goins - €50</p>
+            <button class="buy-button">Buy</button>
+        </div>
+        <div class="coin-package" data-goins="3000" data-price="100">
+            <img src="%PUBLIC_URL%/images/Gold_Coin_3000.png" alt="3000 Goins" class="coin-image" />
+            <p>3000 Goins - €100</p>
+            <button class="buy-button">Buy</button>
+        </div>
+        <div class="coin-package" data-goins="5000" data-price="150">
+            <img src="%PUBLIC_URL%/images/Gold_Coin_5000.png" alt="5000 Goins" class="coin-image" />
+            <p>5000 Goins - €150</p>
+            <button class="buy-button">Buy</button>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2 id="popup-package">Confirm Purchase</h2>
+            <form id="payment-form">
+                <input type="text" placeholder="Card Number" required />
+                <input type="text" placeholder="Cardholder Name" required />
+                <input type="text" placeholder="3 Digit Code" required maxlength="3" />
+                <input type="text" placeholder="Country" required />
+                <label style="display: block; margin-top: 10px;">
+                    <input type="checkbox" id="save-card" /> Save card for future purchases
+                </label>
+            </form>
+            <div class="popup-buttons">
+                <button id="confirm-yes">Yes</button>
+                <button id="confirm-no">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ОТТУК React ще се монтира в #react-root -->
+<div id="react-root"></div>
+
+<!-- Зареждаме vanillaJS (непипан) -->
+<script src="%PUBLIC_URL%/script.js"></script>
+<!-- React bundle (за production) либо CRA dev-server го инжектира автоматично -->
+<script src="%PUBLIC_URL%/bundle.js"></script>
+</body>
+</html>
