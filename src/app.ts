@@ -1,20 +1,18 @@
-import path from 'path';
-import express, { Express } from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
+import express from 'express'
+import cors from 'cors'
+import path from 'path'
+import routes from './routes'
 
-import routes from './routes';
-import errorHandler from './middleware/Error';
+const app = express()
 
-const app: Express = express();
+app.use(cors())
+app.use(express.json())
+app.use(express.static(path.join(__dirname, '../public')))
+app.use('/api', routes)
 
-app.use( express.static(path.join(__dirname, '..', 'public')) );
+app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
+    console.error(err)
+    res.status(err.status || 500).json({ message: err.message || 'Internal Server Error' })
+})
 
-app.use(cors());
-app.use(bodyParser.json());
-
-app.use('/api', routes);
-
-app.use(errorHandler);
-
-export default app;
+export default app

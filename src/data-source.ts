@@ -1,18 +1,20 @@
-import 'reflect-metadata';
-import { DataSource } from 'typeorm';
-import { CoinPackage }  from './entity/CoinPackage';
-import { UsreBalance }  from './entity/UsreBalance';
+import { DataSource } from 'typeorm'
+import { CoinPackage } from './entity/CoinPackage'
+import { UserBalance } from './entity/UserBalance'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 export const AppDataSource = new DataSource({
     type: 'mysql',
-    host:     process.env.DB_HOST       || 'localhost',
-    port:     Number(process.env.DB_PORT) || 3306,
-    username: process.env.DB_USERNAME   || 'root',
-    password: process.env.DB_PASSWORD   || '',
-    database: process.env.DB_DATABASE   || 'trade',
+    host: process.env.DB_HOST || 'localhost',
+    port: Number(process.env.DB_PORT) || 3306,
+    username: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_NAME || 'trade',
     synchronize: true,
-    logging: true,
-    entities: [CoinPackage, UsreBalance],
+    logging: false,
+    entities: [CoinPackage, UserBalance],
+    migrations: [],
     subscribers: [],
-    migrations: []
-});
+})

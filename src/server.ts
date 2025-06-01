@@ -1,33 +1,20 @@
-import 'reflect-metadata';
-import dotenv from 'dotenv';
-import { DataSource } from 'typeorm';
-import app from './app';
+import 'reflect-metadata'
+import dotenv from 'dotenv'
+import app from './app'
+import { AppDataSource } from './data-source'
 
-dotenv.config();
+dotenv.config()
 
-const PORT = Number(process.env.PORT) || 3000;
+const PORT = Number(process.env.PORT) || 3000
 
-new DataSource({
-    type: 'mysql',
-    host: process.env.DB_HOST || 'localhost',
-    port: Number(process.env.DB_PORT) || 3306,
-    username: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '',
-    database: process.env.DB_NAME || 'test',
-    synchronize: true,
-    logging: true,
-    entities: [],
-    subscribers: [],
-    migrations: []
-})
-    .initialize()
+AppDataSource.initialize()
     .then(() => {
-        console.log('✅ Database connected, syncing schemas…');
+        console.log('Data Source has been initialized!')
         app.listen(PORT, () => {
-            console.log(`🚀 Server listening on http://localhost:${PORT}`);
-        });
+            console.log(`Server is running at http://localhost:${PORT}`)
+        })
     })
     .catch(err => {
-        console.error('Failed to connect to the database:', err);
-        process.exit(1);
-    });
+        console.error('Error during Data Source initialization:', err)
+        process.exit(1)
+    })

@@ -1,19 +1,19 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 
 @Entity()
 export class CoinPackage {
     @PrimaryGeneratedColumn()
-    id!: number;
+    id!: number
 
     @Column()
-    amount!: number;
+    amount!: number
 
     @Column('decimal')
-    priceEUR!: number;
+    priceEUR!: number
 
     @Column('decimal')
-    priceUSD!: number;
+    priceUSD!: number
 
     @Column('int')
-    bonusPercent!: number;
+    bonusPercent!: number
 }
